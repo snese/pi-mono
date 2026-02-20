@@ -462,7 +462,10 @@ function buildSystemPrompt(
 	// Add cache point for supported Claude models when caching is enabled
 	if (cacheRetention !== "none" && supportsPromptCaching(model)) {
 		blocks.push({
-			cachePoint: { type: CachePointType.DEFAULT, ...(cacheRetention === "long" && supportsExtendedTTL(model) ? { ttl: CacheTTL.ONE_HOUR } : {}) },
+			cachePoint: {
+				type: CachePointType.DEFAULT,
+				...(cacheRetention === "long" && supportsExtendedTTL(model) ? { ttl: CacheTTL.ONE_HOUR } : {}),
+			},
 		});
 	}
 
